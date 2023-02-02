@@ -41,7 +41,7 @@ class ProductFile:
 
     def append(self, line: str) -> bool:
         """
-        recive a line of text and append it to the end of the file.
+        receive a line of text and append it to the end of the file.
 
         Parameters
         ----------
@@ -107,7 +107,7 @@ class ProductFile:
         except FileNotFoundError:
             logging.error("inventory.txt is not exist.")
         except Exception as e:
-            print(f"Wired exceptions happend! {e}")
+            print(f"Wired exceptions happened! {e}")
 
         return content
 
@@ -274,7 +274,7 @@ class Product:
         An application to manage an inventory of the shop.
         Features:
         - User authorization.
-        - Opetions like add, remove, search and show products.
+        - Options like add, remove, search and show products.
         Press `exit` to exit out of the program.
         """
 
@@ -407,7 +407,8 @@ class Ui:
         result = product.search()
         if result:
             print(result)
-        print("Product not found!!")
+        else:
+            print("Product not found!!")
 
     @staticmethod
     def show_ui():
@@ -472,7 +473,6 @@ def main():
             Ui.menu()
         else:
             print("Username or password is incorrect.")
-
-
+            
 if __name__ == "__main__":
     main()
