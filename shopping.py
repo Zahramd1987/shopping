@@ -289,8 +289,10 @@ class User:
     password: str
 
     def read_config(self):
-        """ """
-        with open("config.toml", "rb") as toml_file:
+        """Read config file."""
+        base_dir = os.path.dirname(__file__)
+        filename = os.path.join(base_dir, "config.toml")
+        with open(filename, "rb") as toml_file:
             config = tomllib.load(toml_file)
         return config
 
@@ -319,10 +321,10 @@ class User:
         """
         Compare username and password with the admin credentials
 
-        Retruns:
+        Returns:
         --------
         outs: bool
-            True if user reponse credentials was correct otherwise False
+            True if user response credentials was correct otherwise False
         """
         admin_username, admin_passwd = self.admin_credentials()
 
@@ -333,7 +335,7 @@ class User:
 
 class Ui:
     """
-    User interfece that user will interact.
+    User interfere that user will interact.
     """
 
     @staticmethod
@@ -473,6 +475,7 @@ def main():
             Ui.menu()
         else:
             print("Username or password is incorrect.")
-            
+
+
 if __name__ == "__main__":
     main()

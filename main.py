@@ -1,4 +1,5 @@
 import tomllib
+import os
 from ui import Ui
 
 
@@ -15,7 +16,9 @@ def read_toml(filename="config.toml") -> dict[str, str]:
     outs: dict[str, str]
         Dictionary of the config.toml file
     """
-    with open(filename, "rb") as toml_file:
+    base_dir = os.path.dirname(__file__)
+    config_path = os.path.join(base_dir, filename)
+    with open(config_path, "rb") as toml_file:
         config = tomllib.load(toml_file)
     return config
 
